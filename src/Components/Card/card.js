@@ -64,9 +64,7 @@ const getMatch = (id,choice) => {
     axios
     .post(enterStudent() + "choose-person",body)
     .then((response) => {
-        setIsMach(response.data.isMatch)
-        
-        if(isMatch){
+        if(response.data.isMatch){
             alert('Eeeeeeita, vai q deu Match') //Alerta Match
         }
         swapCard() //Troca de card
@@ -133,7 +131,7 @@ const getMatch = (id,choice) => {
         })
         .catch((err) => {
             swapCard() //Troca o card
-            alert(err)
+            alert("Tivemos algum problema com o servidor :( Tente resetar novamente!")
         })
     }
 
@@ -172,6 +170,7 @@ const getMatch = (id,choice) => {
                             <ButtonProfile id="heart" heart  onMouseOver = {hoverButton} onMouseLeave = {hoverButton} onClick = {() => getMatch(profile.id,true)}>&#10084;</ButtonProfile>
                     </ButtonArea>
                 </div>
+
                 ):( // Se acabou, alerta que acabou e exibi botão para resetar
                 <div>     
                     <OverMatch>
